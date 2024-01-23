@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import SingleNews from "./pages/SingleNews";
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import MyFeed from './pages/myfeed';
 import Navbar from "./Components/Navbar";
 
 //Getting user context
@@ -24,6 +25,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
             <Route path="/news/:id" element={<SingleNews/>}></Route>
+            <Route path="/user/feed" element={<MyFeed />}></Route>
             <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />}></Route>
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>}></Route>
           </Routes>

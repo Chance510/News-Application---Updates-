@@ -59,13 +59,17 @@ const getFeedNews = async(req, res) => {
 
     const topics = user.categories;
     
-    let news;
+    //let news = {};
 
-    topics.forEach(topic => {
-        news = news + News.find({categories: topic}).sort({createdAt: -1});
+    let result = [];
+
+    topics.forEach((topic) => {
+        const news = News.find({categories: topic}).sort({createdAt: -1});
+        result.push(news);
     })
 
-    res.status(200).json(news);
+    res.status(200).json(result)
+    //setTimeout(() => res.status(200).json(result), 500);
 }
 
 module.exports = {

@@ -7,7 +7,7 @@ const SingleNews = () => {
     const [news, setNews] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const fetchSingleWorkout = async() => {
+    const fetchSingleNews = async() => {
         const response = await fetch('http://localhost:4000/news/news/'+id);
         const json = await response.json();
         if(response.ok){
@@ -19,7 +19,7 @@ const SingleNews = () => {
     }
 
     useEffect(() => {
-        fetchSingleWorkout();
+        fetchSingleNews();
     }, [])
     
     

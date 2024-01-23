@@ -1,9 +1,11 @@
 import { useEffect } from "react";
-import { useTopicContext } from "../hooks/useTopicContext";
 
 //components
 import NewsDetails from "../Components/NewsDetails";
+
+//Context
 import { useNewsContext } from "../hooks/useNewsContext";
+import { useTopicContext } from "../hooks/useTopicContext";
 
 const Home = () => {
     const {news, dispatch: newsdispatch} = useNewsContext();

@@ -20,6 +20,11 @@ const Navbar = () => {
         logout()
     }
 
+    const handleFeedClick = (e) => {
+        navigate("/user/feed");
+    }
+
+
     return ( 
         <nav className="navbar navbar-expand-lg bg-body-tertiary px-5">
             <div className="container-fluid">
@@ -51,7 +56,7 @@ const Navbar = () => {
                             <button value="fashion" className="btn btn-light" onClick={(e) => handleClick(e)}> Fashion </button>
                         </li>
                         <li className="nav-item text-secondary">
-                            <button className="btn btn-light" disabled={!user}>My Feed</button>
+                            <button className="btn btn-light" disabled={!user} onClick={(e) => handleFeedClick(e)}>My Feed</button>
                         </li>
                     </ul>
                     <ul className="navbar-nav d-flex">

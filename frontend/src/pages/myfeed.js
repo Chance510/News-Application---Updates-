@@ -6,41 +6,39 @@ import { useNewsContext } from "../hooks/useNewsContext";
 const MyFeed = () => {
     const {user} = useAuthContext()
     const {news, dispatch} = useNewsContext()
-    const [wait, setWait] = useState(true);
 
     useEffect(() => {
         const fetchFeedNews = async() => {
+            console.log(user)
             const response = await fetch('http://localhost:4000/news/myfeed', {
                 headers: {'Authorization': `Bearer ${user.token}`}
             })
 
             const json = await response.json();
-
+            let setter = []
+            json.forEach(piece => {
+                setter = setter.concat(piece);
+            })
             if(response.ok){
-                dispatch({type: 'SET_NEWS', payload: json});
+                dispatch({type: 'SET_NEWS', payload: setter});
             }
-            console.log(`This is JSON ${json[0][0]}`);
         }
         
 
         fetchFeedNews()
         console.log(typeof(news));
+        console.log(news)
 
 
-    }, [])
+    }, [dispatch])
 
     return ( 
         <div className="bg-secondary-subtle text-emphasis-secondary">
             <div className="home container-lg pt-5">
                 <div className="news-display">
-                    {!wait && news && news.forEach(nt => {
-                       console.log(`This is nt ${nt}`);
-                       console.log(`This is nt[0] ${nt[0]}`)
-                       nt.forEach(n => {
-                        console.log(`This is n ${n}`);
-                        <NewsDetails key={n._id} n={n} />
-                       }) 
-                    })}
+                    {news && news.map((nt) => (
+                       <NewsDetails key={nt._id} n={nt}/>
+                    ))}
                 </div>
             </div>
         </div>

@@ -68,7 +68,19 @@ const getFeedNews = async(req, res) => {
         result.push(news);
     })
 
-    res.status(200).json(result)
+    let toSend = [];
+
+    await Promise.all(result)
+            .then(response => {
+                for(let i=0; i<response.length; i++){
+                    toSend.push(response[i]);
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    res.status(200).json(toSend)
     //setTimeout(() => res.status(200).json(result), 500);
 }
 

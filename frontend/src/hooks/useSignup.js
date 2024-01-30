@@ -12,7 +12,7 @@ export const useSignup = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch('http://localhost:4000/user/signup', {
+        const response = await fetch('https://updates-v1-server.vercel.app/user/signup', {
             method: `POST`,
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ email, password, categories })

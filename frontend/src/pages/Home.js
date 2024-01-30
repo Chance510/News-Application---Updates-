@@ -14,12 +14,12 @@ const Home = () => {
     useEffect(() => {
         const fetchNews = async() => {
             if(topic === 'all'){
-                const response = await fetch('http://localhost:4000/news/'+topic);
+                const response = await fetch('https://updates-v1-server.vercel.app/news/'+topic);
                 const json = await response.json();
                 newsdispatch({type: 'SET_NEWS', payload: json});
             }
             else{
-                const response = await fetch('http://localhost:4000/news/topics/'+topic);
+                const response = await fetch('https://updates-v1-server.vercel.app/news/topics/'+topic);
                 const json = await response.json();
                 newsdispatch({type: 'SET_NEWS', payload: json});
             }

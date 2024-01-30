@@ -8,7 +8,7 @@ const SingleNews = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const fetchSingleNews = async() => {
-        const response = await fetch('http://localhost:4000/news/news/'+id);
+        const response = await fetch('https://updates-v1-server.vercel.app/news/news/'+id);
         const json = await response.json();
         if(response.ok){
             setNews(json);

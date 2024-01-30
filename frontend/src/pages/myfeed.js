@@ -10,7 +10,7 @@ const MyFeed = () => {
     useEffect(() => {
         const fetchFeedNews = async() => {
             console.log(user)
-            const response = await fetch('http://localhost:4000/news/myfeed', {
+            const response = await fetch('https://updates-v1-server.vercel.app/news/myfeed', {
                 headers: {'Authorization': `Bearer ${user.token}`}
             })
 
